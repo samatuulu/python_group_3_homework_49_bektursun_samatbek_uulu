@@ -1,0 +1,161 @@
+[
+{
+  "model": "issuetracker.task",
+  "pk": 2,
+  "fields": {
+    "summary": "Trucker web applicaion",
+    "description": "Web application tracker where users can see the results and status about the specific task. For everyone, this web application is useful to keep track what's goin on with task.",
+    "status": 4,
+    "type": 4,
+    "created_at": "2019-09-25T07:27:07.043Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 3,
+  "fields": {
+    "summary": "Todo list",
+    "description": "Work again with some functionalities.",
+    "status": 5,
+    "type": 5,
+    "created_at": "2019-09-25T07:29:59.504Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 5,
+  "fields": {
+    "summary": "Calculator app",
+    "description": "A simple calculator app that was written in Python using Django.",
+    "status": 6,
+    "type": 6,
+    "created_at": "2019-09-25T07:37:12.939Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 6,
+  "fields": {
+    "summary": "Todo list",
+    "description": "Needs to update from function based view to class based view.",
+    "status": 4,
+    "type": 6,
+    "created_at": "2019-09-25T07:38:34.563Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 7,
+  "fields": {
+    "summary": "Tracker models",
+    "description": "Updated modes.",
+    "status": 6,
+    "type": 5,
+    "created_at": "2019-09-25T07:40:59.641Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 8,
+  "fields": {
+    "summary": "Trucker web applicaion",
+    "description": "Needs some changes...",
+    "status": 5,
+    "type": 5,
+    "created_at": "2019-09-25T07:42:20.270Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 10,
+  "fields": {
+    "summary": "Portfolio Design",
+    "description": "",
+    "status": 6,
+    "type": 6,
+    "created_at": "2019-09-25T07:43:38.819Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 11,
+  "fields": {
+    "summary": "Login/logout pages",
+    "description": "",
+    "status": 4,
+    "type": 6,
+    "created_at": "2019-09-25T07:45:19.155Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 13,
+  "fields": {
+    "summary": "Testing app",
+    "description": "Now it is available to see specific students academic results.",
+    "status": 6,
+    "type": 5,
+    "created_at": "2019-09-25T07:48:27.393Z"
+  }
+},
+{
+  "model": "issuetracker.type",
+  "pk": 4,
+  "fields": {
+    "type": "task"
+  }
+},
+{
+  "model": "issuetracker.type",
+  "pk": 5,
+  "fields": {
+    "type": "bug"
+  }
+},
+{
+  "model": "issuetracker.type",
+  "pk": 6,
+  "fields": {
+    "type": "enhancement"
+  }
+},
+{
+  "model": "issuetracker.status",
+  "pk": 4,
+  "fields": {
+    "status": "new"
+  }
+},
+{
+  "model": "issuetracker.status",
+  "pk": 5,
+  "fields": {
+    "status": "in_progress"
+  }
+},
+{
+  "model": "issuetracker.status",
+  "pk": 6,
+  "fields": {
+    "status": "done"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$yZghLJnfp9oC$yxGxHNZ+kld+bzk1/rN3HXH1EHo2tXJYeqqxMYHzmaY=",
+    "last_login": "2019-09-25T06:37:26.983Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-09-25T06:36:56.696Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

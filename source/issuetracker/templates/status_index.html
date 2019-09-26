@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Status {% endblock %}
+
+{% block content %}
+    {% for stat in status%}<br/>
+        <p>Status: {{ stat.status }}<br/>
+        <a class="btn btn-success" href="{% url 'status_update' stat.pk %}">Update</a></p>
+        <form method="post" action="{% url 'status_delete' stat.pk %}">
+
+            {% csrf_token %}
+
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+
+
+    {% endfor %}
+    <br/>
+    <small>Add Status</small>
+    <a class="btn btn-success" href="{% url 'status_add' %}">Add</a>
+{% endblock %}

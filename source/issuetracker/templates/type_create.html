@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Type{% endblock %}
+
+{% block content %}
+    <h1>Add Type</h1>
+    <form method="post" action="{% url 'type_add' %}">
+        {% include 'partial/type_form.html' with button_text="Add" %}
+    </form>
+{% endblock %}
+

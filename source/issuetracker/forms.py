@@ -9,3 +9,11 @@ class TaskForm(forms.Form):
     description = forms.CharField(max_length=2000, required=False, label='Description', widget=widgets.Textarea)
     status = forms.ModelChoiceField(queryset=Status.objects.all(), label='Status')
     type = forms.ModelChoiceField(queryset=Type.objects.all(), label='Type')
+
+
+class TypeForm(forms.Form):
+    type = forms.CharField(max_length=50)
+
+
+class StatusForm(forms.Form):
+    status = forms.CharField(max_length=50)

@@ -5,10 +5,7 @@
 
 <div class="group-form">
 {% for field in form %}
-    <p>{{ field.label }}</p>
     <p>{{ field }}</p>
 {% endfor %}
 </div>
-<p><input class="btn btn-success" type="submit" value="{{ button_text }}">
-<a class="btn btn-dark" href="{% url 'index' %}">Cancel</a></p>
-
+<p><input class="btn btn-success" type="submit" value="{{ button_text }}"></p>

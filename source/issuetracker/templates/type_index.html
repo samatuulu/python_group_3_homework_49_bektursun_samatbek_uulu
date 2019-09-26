@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Type {% endblock %}
+
+{% block content %}
+    {% for typ in type %}<br/>
+        <p>Type: {{ typ.type }}<br/>
+        <a class="btn btn-success" href="{% url 'type_update' typ.pk %}">Update</a></p>
+        <form method="post" action="{% url 'type_delete' typ.pk %}">
+
+            {% csrf_token %}
+
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+
+    {% endfor %}
+    <br/>
+    <small>Add Type</small>
+    <a class="btn btn-success" class="nav-item nav-link" href="{% url 'type_add' %}">Add</a>
+{% endblock %}

@@ -1,0 +1,3 @@
+function protectDelete(){
+    alert()
+}

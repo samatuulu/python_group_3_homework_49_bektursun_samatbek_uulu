@@ -1,39 +1,6 @@
 [
 {
   "model": "issuetracker.task",
-  "pk": 2,
-  "fields": {
-    "summary": "Trucker web applicaion",
-    "description": "Web application tracker where users can see the results and status about the specific task. For everyone, this web application is useful to keep track what's goin on with task.",
-    "status": 4,
-    "type": 4,
-    "created_at": "2019-09-25T07:27:07.043Z"
-  }
-},
-{
-  "model": "issuetracker.task",
-  "pk": 3,
-  "fields": {
-    "summary": "Todo list",
-    "description": "Work again with some functionalities.",
-    "status": 5,
-    "type": 5,
-    "created_at": "2019-09-25T07:29:59.504Z"
-  }
-},
-{
-  "model": "issuetracker.task",
-  "pk": 5,
-  "fields": {
-    "summary": "Calculator app",
-    "description": "A simple calculator app that was written in Python using Django.",
-    "status": 6,
-    "type": 6,
-    "created_at": "2019-09-25T07:37:12.939Z"
-  }
-},
-{
-  "model": "issuetracker.task",
   "pk": 6,
   "fields": {
     "summary": "Todo list",
@@ -99,10 +66,25 @@
   }
 },
 {
-  "model": "issuetracker.type",
-  "pk": 4,
+  "model": "issuetracker.task",
+  "pk": 27,
   "fields": {
-    "type": "task"
+    "summary": "Update scripts",
+    "description": "Needs update scripts from Python2 to Python3",
+    "status": 4,
+    "type": 25,
+    "created_at": "2019-09-26T12:31:41.991Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 30,
+  "fields": {
+    "summary": "Trucker",
+    "description": "Updated Trucker application",
+    "status": 6,
+    "type": 6,
+    "created_at": "2019-10-03T12:28:07.477Z"
   }
 },
 {
@@ -117,6 +99,13 @@
   "pk": 6,
   "fields": {
     "type": "enhancement"
+  }
+},
+{
+  "model": "issuetracker.type",
+  "pk": 25,
+  "fields": {
+    "type": "task"
   }
 },
 {
@@ -145,7 +134,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$yZghLJnfp9oC$yxGxHNZ+kld+bzk1/rN3HXH1EHo2tXJYeqqxMYHzmaY=",
-    "last_login": "2019-09-25T06:37:26.983Z",
+    "last_login": "2019-10-03T12:28:24.688Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",

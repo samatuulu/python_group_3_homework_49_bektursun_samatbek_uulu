@@ -3,24 +3,23 @@ from django.views.generic import TemplateView, ListView
 
 from issuetracker.forms import TaskForm
 from issuetracker.models import Task
+from .base_view import DetailView
 
 
 class IndexView(ListView):
     template_name = 'task/index.html'
     context_object_name = 'tasks'
+    paginate_by = 2
+    paginate_orphans = 1
 
     def get_queryset(self):
-        return Task.objects.all()
+        return Task.objects.all().order_by('-created_at')
 
 
-class TaskView(TemplateView):
+class TaskView(DetailView):
     template_name = 'task/task_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        task_pk = kwargs.get('pk')
-        context['task'] = get_object_or_404(Task, pk=task_pk)
-        return context
+    model = Task
+    context_key = 'task'
 
 
 class TaskCreateView(TemplateView):
@@ -86,6 +85,3 @@ class TaskDeleteView(TemplateView):
         task = get_object_or_404(Task, pk=task_pk)
         task.delete()
         return redirect('index')
-
-
-

@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    <hr/>
     {% for task in tasks %}
     <div class="jumbotron">
         <h1 class="display-4">{{ task.summary}}</h1>
@@ -17,5 +21,9 @@
         </form>
     </div>
 {% endfor %}
+    <hr/>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 {% endblock %}
 

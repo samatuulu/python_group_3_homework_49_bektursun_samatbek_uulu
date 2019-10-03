@@ -1,17 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from issuetracker.forms import TaskForm
 from issuetracker.models import Task
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'task/index.html'
+    context_object_name = 'tasks'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tasks'] = Task.objects.all()
-        return context
+    def get_queryset(self):
+        return Task.objects.all()
 
 
 class TaskView(TemplateView):

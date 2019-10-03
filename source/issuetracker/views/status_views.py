@@ -1,18 +1,17 @@
 from django.db.models import ProtectedError
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from issuetracker.forms import StatusForm
 from issuetracker.models import Status
 
 
-class StatusIndexView(TemplateView):
+class StatusIndexView(ListView):
     template_name = 'status/status_index.html'
+    context_object_name = 'status'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['status'] = Status.objects.all()
-        return context
+    def get_queryset(self):
+        return Status.objects.all()
 
 
 class StatusCreateView(TemplateView):

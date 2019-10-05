@@ -5,7 +5,8 @@
 
 <div class="group-form">
 {% for field in form %}
-    <p>{{ field.label }}</p>
+    <p>{{ field.label }}<br/>
+    <small>{{ field.help_text }}</small></p>
     <p>{{ field }}</p>
 {% endfor %}
 </div>

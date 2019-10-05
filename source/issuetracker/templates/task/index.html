@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    Tracker Tasks
+{% endblock %}
+
 {% block content %}
+    <br/>
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
@@ -25,5 +30,6 @@
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}
+    <br/>
 {% endblock %}
 

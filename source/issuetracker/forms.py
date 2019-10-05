@@ -18,8 +18,13 @@ class TaskForm(forms.ModelForm):
         }
 
 
-class TypeForm(forms.Form):
-    type = forms.CharField(max_length=50)
+class TypeForm(forms.ModelForm):
+    class Meta:
+        model = Type
+        fields = ['type']
+        help_texts = {
+            'type': 'Please fill out this field'
+        }
 
 
 class StatusForm(forms.ModelForm):

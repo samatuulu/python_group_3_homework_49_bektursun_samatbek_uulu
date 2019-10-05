@@ -1,6 +1,7 @@
 from django.db.models import ProtectedError
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse
+from django.views.generic import TemplateView, ListView, CreateView
 
 from issuetracker.forms import TypeForm
 from issuetracker.models import Type
@@ -14,24 +15,13 @@ class TypeIndexView(ListView):
         return Type.objects.all()
 
 
-class TypeCreateView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        form = TypeForm()
-        return render(request, 'type/type_create.html', context={
-            'form': form
-        })
+class TypeCreateView(CreateView):
+    template_name = 'type/type_create.html'
+    model = Type
+    form_class = TypeForm
 
-    def post(self, request, *args, **kwargs):
-        form = TypeForm(data=request.POST)
-        if form.is_valid():
-            Type.objects.create(
-                type=form.cleaned_data['type']
-            )
-            return redirect('type_index')
-        else:
-            return render(request, 'type/type_create.html', context={
-                'form': form,
-            })
+    def get_success_url(self):
+        return reverse('type_index')
 
 
 class TypeUpdateView(TemplateView):

@@ -4,7 +4,8 @@
 {% endfor %}
 
 <div class="group-form">
-{% for field in form %}
+{% for field in form %}<br/>
+    <small>{{ field.help_text }}</small></p>
     <p>{{ field }}</p>
 {% endfor %}
 </div>

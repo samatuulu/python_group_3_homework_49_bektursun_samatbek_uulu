@@ -22,5 +22,10 @@ class TypeForm(forms.Form):
     type = forms.CharField(max_length=50)
 
 
-class StatusForm(forms.Form):
-    status = forms.CharField(max_length=50)
+class StatusForm(forms.ModelForm):
+    class Meta:
+        model = Status
+        fields = ['status']
+        help_texts = {
+            'status': 'Please fill out.'
+        }

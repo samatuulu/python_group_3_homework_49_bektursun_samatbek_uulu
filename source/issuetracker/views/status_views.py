@@ -1,6 +1,7 @@
 from django.db.models import ProtectedError
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse
+from django.views.generic import TemplateView, ListView, CreateView
 
 from issuetracker.forms import StatusForm
 from issuetracker.models import Status
@@ -14,26 +15,13 @@ class StatusIndexView(ListView):
         return Status.objects.all()
 
 
-class StatusCreateView(TemplateView):
+class StatusCreateView(CreateView):
     template_name = 'status/status_create.html'
+    model = Status
+    form_class = StatusForm
 
-    def get(self, request, *args, **kwargs):
-        form = StatusForm()
-        return render(request, 'status/status_create.html', context={
-                'form': form
-            })
-
-    def post(self, request, *args, **kwargs):
-        form = StatusForm(data=request.POST)
-        if form.is_valid():
-            Status.objects.create(
-                status=form.cleaned_data['status']
-            )
-            return redirect('status_index')
-        else:
-            return render(request, 'status/status_create.html', context={
-                'form': form
-            })
+    def get_success_url(self):
+        return reverse('status_index')
 
 
 class StatusUpdateView(TemplateView):

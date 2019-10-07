@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, ListView, CreateView
 
 from issuetracker.forms import TaskForm
 from issuetracker.models import Task
-from .base_view import DetailView, UpdateView
+from .base_view import DetailView, UpdateView, DeleteView
 
 
 class IndexView(ListView):
@@ -42,9 +42,10 @@ class TaskUpdateView(UpdateView):
         return reverse('index')
 
 
-class TaskDeleteView(TemplateView):
-    def post(self, *args, **kwargs):
-        task_pk = kwargs.get('pk')
-        task = get_object_or_404(Task, pk=task_pk)
-        task.delete()
-        return redirect('index')
+class TaskDeleteView(DeleteView):
+    template_name = 'task/task_delete.html'
+    model = Task
+    pk_url_kwarg = 'pk'
+    context_object_name = 'task'
+    confirm_delete = False
+    redirect_url = 'index'

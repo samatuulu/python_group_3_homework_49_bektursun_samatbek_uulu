@@ -18,7 +18,7 @@
         <p>Status: {{ task.status }}
         Type: {{ task.type }}</p>
         <a href="{% url 'task_detail' task.pk %}">More...</a>
-        <form method="post" action="{% url 'task_delete' task.pk %}">
+        <form method="get" action="{% url 'task_delete' task.pk %}">
 
             {% csrf_token %}
 

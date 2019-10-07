@@ -6,7 +6,7 @@
     {% for stat in status%}<br/>
         <p>Status: {{ stat.status }}<br/>
         <a class="btn btn-success" href="{% url 'status_update' stat.pk %}">Update</a></p>
-        <form method="post" action="{% url 'status_delete' stat.pk %}">
+        <form method="get" action="{% url 'status_delete' stat.pk %}">
 
             {% csrf_token %}
 

@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, ListView, CreateView
 
 from issuetracker.forms import TypeForm
 from issuetracker.models import Type
+from issuetracker.views.base_view import UpdateView
 
 
 class TypeIndexView(ListView):
@@ -24,32 +25,14 @@ class TypeCreateView(CreateView):
         return reverse('type_index')
 
 
-class TypeUpdateView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        type_pk = kwargs.get('pk')
-        type = get_object_or_404(Type, pk=type_pk)
-        form = TypeForm(data={
-            'type': type.type,
-        })
-        return render(request, 'type/type_update.html', context={
-            'form': form,
-            'type': type
-        })
+class TypeUpdateView(UpdateView):
+    template_name = 'type/type_update.html'
+    model = Type
+    form_class = TypeForm
+    context_object_name = 'type'
 
-    def post(self, request, *args, **kwargs):
-        form = TypeForm(data=request.POST)
-        type_pk = kwargs.get('pk')
-        type = get_object_or_404(Type, pk=type_pk)
-        if form.is_valid():
-            type.type = form.cleaned_data['type']
-            type.save()
-
-            return redirect('type_index')
-        else:
-            return render(request, 'type/type_update.html', context={
-                'form': form,
-                'type': type,
-            })
+    def get_redirect_url(self):
+        return reverse('type_index')
 
 
 class TypeDeleteView(TemplateView):

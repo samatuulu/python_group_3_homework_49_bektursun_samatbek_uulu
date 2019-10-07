@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, ListView, CreateView
 
 from issuetracker.forms import StatusForm
 from issuetracker.models import Status
+from issuetracker.views.base_view import UpdateView
 
 
 class StatusIndexView(ListView):
@@ -24,34 +25,14 @@ class StatusCreateView(CreateView):
         return reverse('status_index')
 
 
-class StatusUpdateView(TemplateView):
+class StatusUpdateView(UpdateView):
     template_name = 'status/status_update.html'
+    model = Status
+    form_class = StatusForm
+    context_object_name = 'status'
 
-    def get(self, request, *args, **kwargs):
-        status_pk = kwargs.get('pk')
-        status = get_object_or_404(Status, pk=status_pk)
-        form = StatusForm(data={
-            'status': status.status
-        })
-        return render(request, 'status/status_update.html', context={
-            'form': form,
-            'status': status
-        })
-
-    def post(self,request, *args, **kwargs):
-        form = StatusForm(data=request.POST)
-        status_pk = kwargs.get('pk')
-        status = get_object_or_404(Status, pk=status_pk)
-        if form.is_valid():
-            status.status = form.cleaned_data['status']
-            status.save()
-
-            return redirect('status_index')
-        else:
-            return render(request, 'status/status_update.html', context={
-                'form': form,
-                'status': status
-            })
+    def get_redirect_url(self):
+        return reverse('status_index')
 
 
 class StatusDeleteView(TemplateView):

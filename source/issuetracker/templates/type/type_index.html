@@ -6,7 +6,7 @@
     {% for typ in type %}<br/>
         <p>Type: {{ typ.type }}<br/>
         <a class="btn btn-success" href="{% url 'type_update' typ.pk %}">Update</a></p>
-        <form method="post" action="{% url 'type_delete' typ.pk %}">
+        <form method="get" action="{% url 'type_delete' typ.pk %}">
 
             {% csrf_token %}
 

@@ -53,7 +53,7 @@ class DeleteView(View):
     model = None
     pk_url_kwarg = 'pk'
     context_object_name = 'object'
-    confirm_delete = False
+    confirm_delete = True
 
     def get(self, request, *args, **kwargs):
         obj = self.get_object()

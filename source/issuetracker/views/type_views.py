@@ -1,11 +1,9 @@
-from django.db.models import ProtectedError
-from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic import ListView, CreateView
 
 from issuetracker.forms import TypeForm
 from issuetracker.models import Type
-from issuetracker.views.base_view import UpdateView
+from issuetracker.views.base_view import UpdateView, DeleteView
 
 
 class TypeIndexView(ListView):
@@ -35,12 +33,9 @@ class TypeUpdateView(UpdateView):
         return reverse('type_index')
 
 
-class TypeDeleteView(TemplateView):
-    def post(self, *args, **kwargs):
-        type_pk = kwargs.get('pk')
-        type = get_object_or_404(Type, pk=type_pk)
-        try:
-            type.delete()
-            return redirect('type_index')
-        except ProtectedError:
-            return redirect('type_index')
+class TypeDeleteView(DeleteView):
+    template_name = 'type/type_delete.html'
+    model = Type
+    pk_url_kwarg = 'pk'
+    context_object_name = 'type'
+    redirect_url = 'type_index'

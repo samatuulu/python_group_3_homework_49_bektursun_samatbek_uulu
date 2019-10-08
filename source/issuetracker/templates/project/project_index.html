@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Projects
+{% endblock %}
+
+{% block content %}
+    {% for i in project %}
+        <h6> {{i}} </h6>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Update
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Delete
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> More info...
+            </label>
+        </div>
+    {% endfor %}
+    <br/>
+    <small>Add Project</small>
+    <br/>
+    <a class="btn btn-success" class="nav-item nav-link" href="#">Add Project</a>
+{% endblock %}

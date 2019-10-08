@@ -7,6 +7,7 @@
     "description": "Needs to update from function based view to class based view.",
     "status": 4,
     "type": 6,
+    "project": 2,
     "created_at": "2019-09-25T07:38:34.563Z"
   }
 },
@@ -18,6 +19,7 @@
     "description": "Updated modes.",
     "status": 6,
     "type": 5,
+    "project": 3,
     "created_at": "2019-09-25T07:40:59.641Z"
   }
 },
@@ -29,6 +31,7 @@
     "description": "Needs some changes...",
     "status": 5,
     "type": 5,
+    "project": 1,
     "created_at": "2019-09-25T07:42:20.270Z"
   }
 },
@@ -40,6 +43,7 @@
     "description": "",
     "status": 6,
     "type": 6,
+    "project": 2,
     "created_at": "2019-09-25T07:43:38.819Z"
   }
 },
@@ -51,6 +55,7 @@
     "description": "",
     "status": 4,
     "type": 6,
+    "project": 1,
     "created_at": "2019-09-25T07:45:19.155Z"
   }
 },
@@ -62,6 +67,7 @@
     "description": "Now it is available to see specific students academic results.",
     "status": 6,
     "type": 5,
+    "project": 2,
     "created_at": "2019-09-25T07:48:27.393Z"
   }
 },
@@ -73,6 +79,7 @@
     "description": "Needs update scripts from Python2 to Python3",
     "status": 4,
     "type": 25,
+    "project": 1,
     "created_at": "2019-09-26T12:31:41.991Z"
   }
 },
@@ -84,6 +91,7 @@
     "description": "Updated Trucker application",
     "status": 6,
     "type": 6,
+    "project": 1,
     "created_at": "2019-10-03T12:28:07.477Z"
   }
 },
@@ -119,7 +127,7 @@
   "model": "issuetracker.status",
   "pk": 5,
   "fields": {
-    "status": "in_progress"
+    "status": "in_progresss"
   }
 },
 {
@@ -130,11 +138,51 @@
   }
 },
 {
+  "model": "issuetracker.project",
+  "pk": 1,
+  "fields": {
+    "tittle": "App",
+    "description": "",
+    "created_at": "2019-10-08T11:47:50.772Z",
+    "updated_at": "2019-10-08T12:22:08.176Z"
+  }
+},
+{
+  "model": "issuetracker.project",
+  "pk": 2,
+  "fields": {
+    "tittle": "Refactor",
+    "description": "",
+    "created_at": "2019-10-08T11:54:14.086Z",
+    "updated_at": "2019-10-08T12:22:16.049Z"
+  }
+},
+{
+  "model": "issuetracker.project",
+  "pk": 3,
+  "fields": {
+    "tittle": "Programming",
+    "description": "",
+    "created_at": "2019-10-08T11:54:37.188Z",
+    "updated_at": "2019-10-08T12:22:39.435Z"
+  }
+},
+{
+  "model": "issuetracker.project",
+  "pk": 4,
+  "fields": {
+    "tittle": "Deploy",
+    "description": "",
+    "created_at": "2019-10-08T12:23:33.751Z",
+    "updated_at": "2019-10-08T12:23:33.751Z"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$yZghLJnfp9oC$yxGxHNZ+kld+bzk1/rN3HXH1EHo2tXJYeqqxMYHzmaY=",
-    "last_login": "2019-10-03T12:28:24.688Z",
+    "last_login": "2019-10-08T11:46:36.539Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",

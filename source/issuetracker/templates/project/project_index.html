@@ -8,8 +8,8 @@
     {% for i in project %}
         <h6> {{i}} </h6>
         <div class="btn-group btn-group-toggle">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" checked> Update
+            <label class="btn btn-secondary">
+                <a class="btn btn-secondary" href="{% url 'project_update' i.pk %}">Update</a>
             </label>
             <label class="btn btn-secondary">
                 <input type="radio" name="options" autocomplete="off"> Delete

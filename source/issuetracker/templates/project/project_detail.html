@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail Project
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ project.tittle }}</h1>
+    <p>{{ project.description }}</p>
+    <p>Created at: {{ project.created_at|date:'d.m.Y H:i:s'  }}</p>
+    <p>Updated at: {{ project.updated_at|date:'d.m.Y H:i:s'  }}</p>
+
+{% endblock %}

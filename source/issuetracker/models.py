@@ -6,7 +6,7 @@ class Task(models.Model):
     description = models.TextField(max_length=2000, null=True, blank=True)
     status = models.ForeignKey('issuetracker.Status', related_name='task_status', on_delete=models.PROTECT, verbose_name='Status')
     type = models.ForeignKey('issuetracker.Type', related_name='task_type', on_delete=models.PROTECT, verbose_name='Type')
-    project = models.ForeignKey('issuetracker.Project', related_name='task_project', on_delete=models.PROTECT, null=True, blank=False)
+    project = models.ForeignKey('issuetracker.Project', related_name='task_project', on_delete=models.CASCADE, null=True, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
 
     def __str__(self):

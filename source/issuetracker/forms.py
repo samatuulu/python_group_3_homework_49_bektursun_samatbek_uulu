@@ -1,6 +1,6 @@
 from django import forms
 
-from issuetracker.models import Status, Type, Task
+from issuetracker.models import Status, Type, Task, Project
 
 
 class TaskForm(forms.ModelForm):
@@ -34,3 +34,9 @@ class StatusForm(forms.ModelForm):
         help_texts = {
             'status': 'Please fill out.'
         }
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['tittle', 'description']

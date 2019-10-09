@@ -18,8 +18,8 @@ from django.urls import path
 
 from issuetracker.views import IndexView, TaskView, TaskCreateView, TaskUpdateView, TaskDeleteView, TypeIndexView, \
     TypeCreateView, TypeUpdateView, TypeDeleteView, StatusIndexView, StatusCreateView, StatusUpdateView, \
-    StatusDeleteView
-from issuetracker.views.project_view import ProjectIndexView
+    StatusDeleteView, ProjectIndexView, ProjectDetailView
+from issuetracker.views.project_view import ProjectCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,4 +37,7 @@ urlpatterns = [
     path('status/<int:pk>/update/', StatusUpdateView.as_view(), name='status_update'),
     path('status/<int:pk>/delete/', StatusDeleteView.as_view(), name='status_delete'),
     path('project/', ProjectIndexView.as_view(), name='project_index'),
+    path('project/<int:pk>/', ProjectDetailView.as_view(), name='project_detail'),
+    path('project/create/', ProjectCreateView.as_view(), name='project_create'),
 ]
+

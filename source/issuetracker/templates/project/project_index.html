@@ -7,20 +7,20 @@
 {% block content %}
     {% for i in project %}
         <h6> {{i}} </h6>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <div class="btn-group btn-group-toggle">
             <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> Update
+                <input type="radio" name="options" checked> Update
             </label>
             <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> Delete
+                <input type="radio" name="options" autocomplete="off"> Delete
             </label>
             <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" autocomplete="off"> More info...
+                <a class="btn btn-secondary" href="{% url 'project_detail' i.pk %}">More..</a>
             </label>
         </div>
     {% endfor %}
     <br/>
     <small>Add Project</small>
     <br/>
-    <a class="btn btn-success" class="nav-item nav-link" href="#">Add Project</a>
+    <a class="btn btn-success" class="nav-item nav-link" href="{% url 'project_create' %}">Add Project</a>
 {% endblock %}

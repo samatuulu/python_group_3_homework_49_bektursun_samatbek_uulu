@@ -12,7 +12,7 @@
                 <a class="btn btn-secondary" href="{% url 'project_update' i.pk %}">Update</a>
             </label>
             <label class="btn btn-secondary">
-                <input type="radio" name="options" autocomplete="off"> Delete
+                <a class="btn btn-secondary" href="{% url 'project_delete' i.pk %}">Delete</a>
             </label>
             <label class="btn btn-secondary">
                 <a class="btn btn-secondary" href="{% url 'project_detail' i.pk %}">More..</a>

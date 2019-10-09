@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    <hr>
     {% for i in project %}
         <h6> {{i}} </h6>
         <div class="btn-group btn-group-toggle">
@@ -20,7 +21,10 @@
         </div>
     {% endfor %}
     <br/>
+    <div>
+    </div>
+    <hr/>
     <small>Add Project</small>
     <br/>
-    <a class="btn btn-success" class="nav-item nav-link" href="{% url 'project_create' %}">Add Project</a>
+    <a class="btn btn-success" href="{% url 'project_create' %}">Add Project</a>
 {% endblock %}

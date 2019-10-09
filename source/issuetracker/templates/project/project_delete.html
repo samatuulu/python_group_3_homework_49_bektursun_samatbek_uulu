@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Delete project{% endblock %}
+{% block title %}Delete Project{% endblock %}
 
 {% block content %}
-    <h1>Are you sure want to delete article {{ project }}?</h1>
+    <h1>Are you sure want to delete project {{ project }}?</h1>
     <form method="POST" action="{% url 'project_delete' project.pk %}" class="text-center">
         {% csrf_token %}
-        <p><input type="submit" value="Confirm"></p>
-        <p><a href="{% url 'project_detail' project.pk %}">Cancel</a></p>
+        <p><input type="submit" class="btn btn-danger" value="Confirm"></p>
+        <p><a class="btn btn-success" href="{% url 'project_detail' project.pk %}">Cancel</a></p>
     </form>
 {% endblock %}

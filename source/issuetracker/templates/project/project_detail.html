@@ -5,10 +5,19 @@
 {% endblock %}
 
 {% block content %}
+    <h3>Project name: {{ project.tittle }}</h3>
+    <p>Description: {{ project.description }}<br/>
+    Created at: {{ project.created_at|date:'d.m.Y H:i:s'  }}<br/>
+    Updated at: {{ project.updated_at|date:'d.m.Y H:i:s'  }}</p>
+    <hr>
 
-    <h1>Project name: {{ project.tittle }}</h1>
-    <p>Description: {{ project.description }}</p>
-    <p>Created at: {{ project.created_at|date:'d.m.Y H:i:s'  }}</p>
-    <p>Updated at: {{ project.updated_at|date:'d.m.Y H:i:s'  }}</p>
-
+<h5>Tasks for {{ project }}</h5>
+{% for task in tasks %}
+    <h6>Title: {{ task.summary }}</h6>
+    <p>Description: {{ task.description }}<br/>
+    Status: {{ task.status }}<br/>
+    Type: {{ task.type }}<br/>
+    Created at: {{ task.created_at }}</p>
+    <hr>
+{% endfor %}
 {% endblock %}

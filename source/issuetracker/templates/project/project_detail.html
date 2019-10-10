@@ -8,7 +8,8 @@
     <h3>Project name: {{ project.tittle }}</h3>
     <p>Description: {{ project.description }}<br/>
     Created at: {{ project.created_at|date:'d.m.Y H:i:s'  }}<br/>
-    Updated at: {{ project.updated_at|date:'d.m.Y H:i:s'  }}</p>
+    Updated at: {{ project.updated_at|date:'d.m.Y H:i:s'  }}<br/>
+    Project status: {{ project.status }}</p>
     <hr>
 
 <h5>Tasks for {{ project }}</h5>

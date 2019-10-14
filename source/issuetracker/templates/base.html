@@ -21,8 +21,8 @@
         <a class="nav-item nav-link active" href="{% url 'status_index' %}">Status<span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="{% url 'type_index' %}">Type</a>
         <a class="nav-item nav-link" href="{% url 'task_add' %}">Add</a>
-{#        {% block menu %} {% endblock %}#}
-      <a class="nav-item nav-link" href="{% url 'project_index' %}">Projects</a>
+        <a class="nav-item nav-link" href="{% url 'project_index' %}">Projects</a>
+        {% block menu %} {% endblock %}
     </div>
   </div>
 </nav>

@@ -40,3 +40,7 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['tittle', 'description', 'status']
+
+
+class SimpleSearchForm(forms.Form):
+    search = forms.CharField(max_length=100, required=False, label='Search')

@@ -3,8 +3,10 @@
 {% block title %}
     Projects
 {% endblock %}
-
+{% block menu %}
+{% endblock %}
 {% block content %}
+    {% include 'partial/simple_search.html' %}
     <hr>
     {% for i in project %}
         <h6> {{i}} </h6>

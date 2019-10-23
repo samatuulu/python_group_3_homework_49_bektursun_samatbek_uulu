@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'issuetracker.apps.IssuetrackerConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [

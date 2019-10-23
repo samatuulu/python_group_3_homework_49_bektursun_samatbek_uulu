@@ -12,13 +12,13 @@
         <h6> {{i}} </h6>
         <div class="btn-group btn-group-toggle">
             <label class="btn btn-secondary">
-                <a class="btn btn-secondary" href="{% url 'project_update' i.pk %}">Update</a>
+                <a class="btn btn-secondary" href="{% url 'issuetracker:project_update' i.pk %}">Update</a>
             </label>
             <label class="btn btn-secondary">
-                <a class="btn btn-secondary" href="{% url 'project_delete' i.pk %}">Delete</a>
+                <a class="btn btn-secondary" href="{% url 'issuetracker:project_delete' i.pk %}">Delete</a>
             </label>
             <label class="btn btn-secondary">
-                <a class="btn btn-secondary" href="{% url 'project_detail' i.pk %}">More..</a>
+                <a class="btn btn-secondary" href="{% url 'issuetracker:project_detail' i.pk %}">More..</a>
             </label>
         </div>
     {% endfor %}
@@ -28,5 +28,5 @@
     <hr/>
     <small>Add Project</small>
     <br/>
-    <a class="btn btn-success" href="{% url 'project_create' %}">Add Project</a>
+    <a class="btn btn-success" href="{% url 'issuetracker:project_create' %}">Add Project</a>
 {% endblock %}

@@ -6,7 +6,7 @@
 
 {% block content %}
     <h1>Update Type</h1>
-    <form method="POST" action="{% url 'type_update' type.pk %}">
+    <form method="POST" action="{% url 'issuetracker:type_update' type.pk %}">
         {% include 'partial/type_form.html' with button_text="Update" %}
     </form>
 {% endblock %}

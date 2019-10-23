@@ -5,8 +5,8 @@
 {% block content %}
     {% for typ in type %}<br/>
         <p>Type: {{ typ.type }}<br/>
-        <a class="btn btn-success" href="{% url 'type_update' typ.pk %}">Update</a></p>
-        <form method="get" action="{% url 'type_delete' typ.pk %}">
+        <a class="btn btn-success" href="{% url 'issuetracker:type_update' typ.pk %}">Update</a></p>
+        <form method="get" action="{% url 'issuetracker:type_delete' typ.pk %}">
 
             {% csrf_token %}
 
@@ -16,5 +16,5 @@
     {% endfor %}
     <br/>
     <small>Add Type</small>
-    <a class="btn btn-success" class="nav-item nav-link" href="{% url 'type_add' %}">Add</a>
+    <a class="btn btn-success" class="nav-item nav-link" href="{% url 'issuetracker:type_add' %}">Add</a>
 {% endblock %}

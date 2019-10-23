@@ -18,8 +18,8 @@
         <p>{{ task.description }}</p>
         <p>Status: {{ task.status }}
         Type: {{ task.type }}</p>
-        <a href="{% url 'task_detail' task.pk %}">More...</a>
-        <form method="get" action="{% url 'task_delete' task.pk %}">
+        <a href="{% url 'issuetracker:task_detail' task.pk %}">More...</a>
+        <form method="get" action="{% url 'issuetracker:task_delete' task.pk %}">
 
             {% csrf_token %}
 

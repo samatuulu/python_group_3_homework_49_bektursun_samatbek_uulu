@@ -2,7 +2,7 @@
 {% block title %}Task Detail{% endblock %}
 
 {% block menu %}
-    <a class="nav-item nav-link active" href="{% url 'task_update' task.pk %}">Edit<span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="{% url 'issuetracker:task_update' task.pk %}">Edit<span class="sr-only">(current)</span></a>
 {% endblock %}
 
 {% block content %}

@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Create Project</h1>
-    <form method="POST" action="{% url 'project_create' %}">
+    <form method="POST" action="{% url 'issuetracker:project_create' %}">
         {% include 'partial/project_cu.html' with button_text="Create" %}
     </form>
 {% endblock %}

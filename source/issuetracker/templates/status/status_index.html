@@ -5,8 +5,8 @@
 {% block content %}
     {% for stat in status%}<br/>
         <p>Status: {{ stat.status }}<br/>
-        <a class="btn btn-success" href="{% url 'status_update' stat.pk %}">Update</a></p>
-        <form method="get" action="{% url 'status_delete' stat.pk %}">
+        <a class="btn btn-success" href="{% url 'issuetracker:status_update' stat.pk %}">Update</a></p>
+        <form method="get" action="{% url 'issuetracker:status_delete' stat.pk %}">
 
             {% csrf_token %}
 
@@ -17,7 +17,7 @@
     {% endfor %}
     <br/>
     <small>Add Status</small>
-    <a class="btn btn-success" href="{% url 'status_add' %}">Add</a>
+    <a class="btn btn-success" href="{% url 'issuetracker:status_add' %}">Add</a>
 {% endblock %}
 
 

@@ -19,7 +19,7 @@ class StatusCreateView(CreateView):
     form_class = StatusForm
 
     def get_success_url(self):
-        return reverse('status_index')
+        return reverse('issuetracker:status_index')
 
 
 class StatusUpdateView(UpdateView):
@@ -29,11 +29,11 @@ class StatusUpdateView(UpdateView):
     context_object_name = 'status'
 
     def get_success_url(self):
-        return reverse('status_index')
+        return reverse('issuetracker:status_index')
 
 
 class StatusDeleteView(DeleteView):
     template_name = 'status/status_delete.html'
     model = Status
     context_object_name = 'status'
-    success_url = reverse_lazy('status_index')
+    success_url = reverse_lazy('issuetracker:status_index')

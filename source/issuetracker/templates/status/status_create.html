@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Add Status</h1>
-    <form method="post" action="{% url 'status_add' %}">
+    <form method="post" action="{% url 'issuetracker:status_add' %}">
         {% include 'partial/status_form.html' with button_text="Add" %}
     </form>
 {% endblock %}

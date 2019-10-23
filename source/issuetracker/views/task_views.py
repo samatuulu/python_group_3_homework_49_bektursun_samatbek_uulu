@@ -50,7 +50,7 @@ class TaskCreateView(CreateView):
     form_class = TaskForm
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('issuetracker:index')
 
 
 class TaskView(DetailView):
@@ -67,11 +67,11 @@ class TaskUpdateView(UpdateView):
     context_key = 'task'
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('issuetracker:index')
 
 
 class TaskDeleteView(DeleteView):
     template_name = 'task/task_delete.html'
     model = Task
     context_object_name = 'task'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('issuetracker:index')

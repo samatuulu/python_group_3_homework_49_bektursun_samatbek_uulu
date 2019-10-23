@@ -67,7 +67,7 @@ class ProjectCreateView(CreateView):
     form_class = ProjectForm
 
     def get_success_url(self):
-        return reverse('project_detail', kwargs={'pk': self.object.pk})
+        return reverse('issuetracker:project_detail', kwargs={'pk': self.object.pk})
 
 
 class ProjectUpdateView(UpdateView):
@@ -77,11 +77,11 @@ class ProjectUpdateView(UpdateView):
     form_class = ProjectForm
 
     def get_success_url(self):
-        return reverse('project_detail', kwargs={'pk': self.object.pk})
+        return reverse('issuetracker:project_detail', kwargs={'pk': self.object.pk})
 
 
 class ProjectDeleteView(DeleteView):
     template_name = 'project/project_delete.html'
     model = Project
     context_object_name = 'project'
-    success_url = reverse_lazy('project_index')
+    success_url = reverse_lazy('issuetracker:project_index')

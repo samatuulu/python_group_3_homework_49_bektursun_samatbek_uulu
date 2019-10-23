@@ -19,7 +19,7 @@ class TypeCreateView(CreateView):
     form_class = TypeForm
 
     def get_success_url(self):
-        return reverse('type_index')
+        return reverse('issuetracker:type_index')
 
 
 class TypeUpdateView(UpdateView):
@@ -29,11 +29,11 @@ class TypeUpdateView(UpdateView):
     context_object_name = 'type'
 
     def get_success_url(self):
-        return reverse('type_index')
+        return reverse('issuetracker:type_index')
 
 
 class TypeDeleteView(DeleteView):
     template_name = 'type/type_delete.html'
     model = Type
     context_object_name = 'type'
-    success_url = reverse_lazy('type_index')
+    success_url = reverse_lazy('issuetracker:type_index')

@@ -23,7 +23,9 @@
 
             {% csrf_token %}
 
-            <button class="btn btn-danger" type="submit">Delete</button>
+            {% if request.user.is_authenticated %}
+                <button class="btn btn-danger" type="submit">Delete</button>
+            {% endif %}
         </form>
     </div>
 {% endfor %}

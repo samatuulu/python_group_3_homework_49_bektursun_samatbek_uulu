@@ -1,6 +1,7 @@
 from urllib.parse import urlencode
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
@@ -44,7 +45,7 @@ class IndexView(ListView):
         return None
 
 
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'task/task_create.html'
     model = Task
     form_class = TaskForm
@@ -60,7 +61,7 @@ class TaskView(DetailView):
     key_kwarg = 'task.pk'
 
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     template_name = 'task/task_update.html'
     form_class = TaskForm
@@ -70,8 +71,9 @@ class TaskUpdateView(UpdateView):
         return reverse('issuetracker:index')
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'task/task_delete.html'
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('issuetracker:index')
+

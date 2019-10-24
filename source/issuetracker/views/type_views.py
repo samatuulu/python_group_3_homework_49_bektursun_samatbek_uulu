@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
@@ -13,7 +14,7 @@ class TypeIndexView(ListView):
         return Type.objects.all()
 
 
-class TypeCreateView(CreateView):
+class TypeCreateView(LoginRequiredMixin, CreateView):
     template_name = 'type/type_create.html'
     model = Type
     form_class = TypeForm
@@ -22,7 +23,7 @@ class TypeCreateView(CreateView):
         return reverse('issuetracker:type_index')
 
 
-class TypeUpdateView(UpdateView):
+class TypeUpdateView(LoginRequiredMixin, UpdateView):
     model = Type
     template_name = 'type/type_update.html'
     form_class = TypeForm
@@ -32,7 +33,7 @@ class TypeUpdateView(UpdateView):
         return reverse('issuetracker:type_index')
 
 
-class TypeDeleteView(DeleteView):
+class TypeDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'type/type_delete.html'
     model = Type
     context_object_name = 'type'

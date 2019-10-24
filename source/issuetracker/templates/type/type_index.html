@@ -5,16 +5,23 @@
 {% block content %}
     {% for typ in type %}<br/>
         <p>Type: {{ typ.type }}<br/>
-        <a class="btn btn-success" href="{% url 'issuetracker:type_update' typ.pk %}">Update</a></p>
+            {% if request.user.is_authenticated %}
+                <a class="btn btn-success" href="{% url 'issuetracker:type_update' typ.pk %}">Update</a></p>
+            {% endif %}
         <form method="get" action="{% url 'issuetracker:type_delete' typ.pk %}">
 
             {% csrf_token %}
 
-            <button class="btn btn-danger" type="submit">Delete</button>
+            {% if request.user.is_authenticated %}
+                <button class="btn btn-danger" type="submit">Delete</button>
+            {% endif %}
         </form>
 
     {% endfor %}
     <br/>
-    <small>Add Type</small>
-    <a class="btn btn-success" class="nav-item nav-link" href="{% url 'issuetracker:type_add' %}">Add</a>
+    {% if request.user.is_authenticated %}
+        <small>Add Type</small>
+        <a class="btn btn-success" class="nav-item nav-link" href="{% url 'issuetracker:type_add' %}">Add</a>
+    {% endif %}
+
 {% endblock %}

@@ -2,6 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
+from .forms import UserCreationForm
+
 
 def login_view(request):
     context = {}
@@ -24,3 +26,16 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('issuetracker:index')
+
+
+def register_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = UserCreationForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('issuetracker:index')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'user_create.html', context={'form': form})

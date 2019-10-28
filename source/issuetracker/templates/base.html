@@ -29,6 +29,7 @@
         <a class="nav-item nav-link" href="{% url 'accounts:logout' %}?next={{ request.path }}">Logout</a>
     {% else %}
         <a class="nav-item nav-link" href="{% url 'accounts:login' %}?next={{ request.path }}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'accounts:create' %}?next={{ request.path }}">Sign Up</a>
     {% endif %}
 
         {% block menu %} {% endblock %}

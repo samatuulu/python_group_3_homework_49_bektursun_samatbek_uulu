@@ -7,6 +7,7 @@ class UserCreationForm(forms.ModelForm):
     password_confirm = forms.CharField(label='Confirm password', widget=forms.PasswordInput, strip=False)
     first_name = forms.CharField(label='Name', max_length=100, required=False)
     last_name = forms.CharField(label='Last name', max_length=100, required=False)
+    email = forms.CharField(label='Email', required=True)
 
     def clean(self):
         first_name = self.cleaned_data.get('first_name')

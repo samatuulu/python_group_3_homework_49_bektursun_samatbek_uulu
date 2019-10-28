@@ -29,3 +29,7 @@ body{
    background: #6a7dcc;
    color: #dddddd
 }
+
+.test{
+   max-width: 40%;
+}

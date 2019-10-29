@@ -1,10 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-from django.views.generic import DetailView
+from django.urls import reverse
+from django.views.generic import DetailView, UpdateView
 
-from .forms import UserCreationForm
+from .forms import UserCreationForm, UserUpdateForm
 
 
 def login_view(request):
@@ -47,3 +49,16 @@ class UserDetailView(DetailView):
     model = User
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
+
+
+class UserUpdateView(UserPassesTestMixin, UpdateView):
+    model = User
+    template_name = 'user_update.html'
+    context_object_name = 'user_obj'
+    form_class = UserUpdateForm
+
+    def test_func(self):
+        return self.get_object() == self.request.user
+
+    def get_success_url(self):
+        return reverse('accounts:user_detail', kwargs={'pk': self.object.pk})

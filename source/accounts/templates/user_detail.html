@@ -5,7 +5,7 @@
 
 {% block menu %}
     {% if user_obj == request.user %}
-    <li><a class="nav-item nav-link" href="#">Edit</a></li>
+    <li><a class="nav-item nav-link" href="{% url 'accounts:user_update' user_obj.pk %}">Edit</a></li>
     <li><a class="nav-item nav-link" href="#">Edit password</a></li>
      {% endif %}
 {% endblock %}
@@ -15,5 +15,4 @@
     <p>First name: {{ user_obj.first_name }} </p>
     <p>Last name: {{ user_obj.last_name  }}</p>
     <p>Email: {{ user_obj.email }}</p>
-
 {% endblock %}

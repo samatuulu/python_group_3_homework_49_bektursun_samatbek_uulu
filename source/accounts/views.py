@@ -23,7 +23,7 @@ def login_view(request):
             return redirect(get_to_other_page)
         else:
             context['has_error'] = True
-    return render(request, 'login.html', context=context)
+    return render(request, 'registration/login.html', context=context)
 
 
 @login_required

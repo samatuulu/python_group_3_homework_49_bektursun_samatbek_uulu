@@ -15,8 +15,8 @@ class UserCreationForm(forms.ModelForm):
         self.fields['email'].widget.attrs.update({'class': 'form-control'})
 
     username = forms.CharField(max_length=50, label='Username', required=True)
-    password = forms.CharField(label='Password:', strip=False, widget=forms.PasswordInput)
-    password_confirm = forms.CharField(label='Confirm password:', widget=forms.PasswordInput, strip=False)
+    password = forms.CharField(max_length=100, label='Password:', strip=False, widget=forms.PasswordInput)
+    password_confirm = forms.CharField(max_length=100, label='Confirm password:', widget=forms.PasswordInput, strip=False)
     first_name = forms.CharField(label='First name:', max_length=100, required=False)
     last_name = forms.CharField(label='Last name:', max_length=100, required=False)
     email = forms.CharField(label='Email:', required=True)
@@ -72,3 +72,39 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'email']
         labels = {'first_name': 'First name', 'last_name': 'Last name', 'email': 'Email'}
+
+
+class UserUpdatePasswordForm(forms.ModelForm):
+    password = forms.CharField(max_length=100, label='New Password:', strip=False,
+                               widget=forms.PasswordInput)
+    password_confirm = forms.CharField(max_length=100, label='New Password Confirm:',
+                                       widget=forms.PasswordInput, strip=False)
+    old_password = forms.CharField(max_length=100, label='Old Password:',
+                               widget=forms.PasswordInput)
+
+    def clean_old_password(self):
+        old_password = self.cleaned_data.get('old_password')
+        user = self.instance
+        if not user.check_password(old_password):
+            raise ValidationError('Invalid old password', code='invalid_password')
+        return old_password
+
+    def clean_password_confirm(self):
+        super().clean()
+        password = self.cleaned_data.get("password")
+        password_confirm = self.cleaned_data.get("password_confirm")
+
+        if password != password_confirm:
+            raise forms.ValidationError('New password does not matches!')
+        return password_confirm
+
+    def save(self, commit=True):
+        user = self.instance
+        user.set_password(self.cleaned_data.get('password'))
+        if commit:
+            user.save()
+        return user
+
+    class Meta:
+        model = User
+        fields = ['password', 'password_confirm', 'old_password']

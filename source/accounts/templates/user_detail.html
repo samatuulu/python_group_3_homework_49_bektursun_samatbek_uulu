@@ -6,7 +6,7 @@
 {% block menu %}
     {% if user_obj == request.user %}
     <li><a class="nav-item nav-link" href="{% url 'accounts:user_update' user_obj.pk %}">Edit</a></li>
-    <li><a class="nav-item nav-link" href="#">Edit password</a></li>
+    <li><a class="nav-item nav-link" href="{% url 'accounts:user_change_password' user_obj.pk %}">Change Password</a></li>
      {% endif %}
 {% endblock %}
 

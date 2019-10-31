@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 
+from accounts.models import UserLink
+
 
 class UserCreationForm(forms.ModelForm):
 
@@ -67,11 +69,28 @@ class UserCreationForm(forms.ModelForm):
         fields = ['username', 'password', 'password_confirm', 'first_name', 'last_name', 'email']
 
 
-class UserUpdateForm(forms.ModelForm):
+# class UserUpdateForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ('first_name', 'last_name', 'email')
+#         labels = {'first_name': 'First name', 'last_name': 'Last name', 'email': 'Email'}
+
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
-        labels = {'first_name': 'First name', 'last_name': 'Last name', 'email': 'Email'}
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserLink
+        fields = ['link']
+
+
+
+class UserLinkForm(forms.ModelForm):
+    class Meta:
+        model = UserLink
+        fields = ['link']
 
 
 class UserUpdatePasswordForm(forms.ModelForm):

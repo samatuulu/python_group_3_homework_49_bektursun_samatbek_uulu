@@ -2,11 +2,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.db import transaction
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import DetailView, UpdateView, ListView
 
-from .forms import UserCreationForm, UserUpdateForm, UserUpdatePasswordForm
+from .forms import UserCreationForm, UserUpdatePasswordForm, UserForm, ProfileForm
 
 
 def login_view(request):
@@ -51,17 +52,59 @@ class UserDetailView(DetailView):
     context_object_name = 'user_obj'
 
 
-class UserUpdateView(UserPassesTestMixin, UpdateView):
+class UserUpdateView(UserPassesTestMixin,  UpdateView):
     model = User
     template_name = 'user_update.html'
     context_object_name = 'user_obj'
-    form_class = UserUpdateForm
 
     def test_func(self):
         return self.get_object() == self.request.user
 
+    @transaction.atomic()
+    def post(self, request, *args, **kwargs):
+        user_form = UserForm(instance=request.user, data=request.POST)
+        profile_form = ProfileForm(instance=request.user.user_link, data=request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('issuetracker:index')
+        else:
+            return render(request, 'user_update.html', {
+                'user_form': user_form,
+                'profile_form': profile_form
+            })
+
+    def get(self, request, *args, **kwargs):
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.user_link)
+
+        return render(request, 'user_update.html', {
+            'user_form': user_form,
+            'profile_form': profile_form
+        })
+
     def get_success_url(self):
         return reverse('accounts:user_detail', kwargs={'pk': self.object.pk})
+
+
+# @transaction.atomic
+# def update_profile(request):
+#     if request.method == 'POST':
+#         user_form = UserForm(request.POST, instance=request.user)
+#         profile_form = ProfileForm(request.POST, instance=request.user.user_link)
+#         if user_form.is_valid() and profile_form.is_valid():
+#             user_form.save()
+#             profile_form.save()
+#             # messages.success(request, _('Your profile was successfully updated!'))
+#             return redirect('accounts:all_users')
+#
+#     else:
+#         user_form = UserForm(instance=request.user)
+#         profile_form = ProfileForm(instance=request.user.user_link)
+#     return render(request, 'user_update.html', {
+#         'user_form': user_form,
+#         'profile_form': profile_form
+#     })
 
 
 class UserUpdatePasswordView(UserPassesTestMixin, UpdateView):

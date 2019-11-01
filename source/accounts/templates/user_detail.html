@@ -15,5 +15,7 @@
     <p>First name: {{ user_obj.first_name }} </p>
     <p>Last name: {{ user_obj.last_name }}</p>
     <p>Email: {{ user_obj.email }}</p>
-    <p>GitGub: <a href="{{ user_obj.user_link }}">{{ user_obj.user_link }}</a></p>
+    {% if user_obj.user_link.link %}
+        <p>GitGub: <a href="{{ user_obj.user_link }}">{{ user_obj.user_link }}</a></p>
+    {% endif %}
 {% endblock %}

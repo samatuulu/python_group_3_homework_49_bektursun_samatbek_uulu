@@ -122,3 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'issuetracker:index'
 LOGOUT_REDIRECT_URL = 'issuetracker:index'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/uploads/'

@@ -11,11 +11,15 @@
 {% endblock %}
 
 {% block content %}
+    {% if user_obj.user_link.profile_photo %}
+        <img class="avatar" src="{{ user_obj.user_link.profile_photo.url }}" width="250" height="250" alt="user picture">
+    {% endif %}
     <h1>Profile: <b>{{ user_obj.username }}</b></h1>
-    <p>First name: {{ user_obj.first_name }} </p>
+    <p>First name: {{ user_obj.first_name }}</p>
     <p>Last name: {{ user_obj.last_name }}</p>
+    <p>About: {{ user_obj.user_link.about }}</p>
     <p>Email: {{ user_obj.email }}</p>
     {% if user_obj.user_link.link %}
-        <p>GitGub: <a href="{{ user_obj.user_link }}">{{ user_obj.user_link }}</a></p>
+        <p>GitGub: <a href="{{ user_obj.user_link.link }}">{{ user_obj.user_link.link }}</a></p>
     {% endif %}
 {% endblock %}

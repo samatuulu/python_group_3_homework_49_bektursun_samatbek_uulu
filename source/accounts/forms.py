@@ -2,8 +2,6 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 
-from accounts.models import UserLink
-
 
 class UserCreationForm(forms.ModelForm):
 
@@ -69,28 +67,46 @@ class UserCreationForm(forms.ModelForm):
         fields = ['username', 'password', 'password_confirm', 'first_name', 'last_name', 'email']
 
 
-# class UserUpdateForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ('first_name', 'last_name', 'email')
-#         labels = {'first_name': 'First name', 'last_name': 'Last name', 'email': 'Email'}
+class UserChangeForm(forms.ModelForm):
+    profile_photo = forms.ImageField(label='Avatar', required=False)
+    about = forms.CharField(widget=forms.TextInput, required=False, label='About:')
+    link = forms.URLField(max_length=200, required=False, label='Link:')
 
-class UserForm(forms.ModelForm):
+    def get_initial_for_field(self, field, field_name):
+        if field_name in self.Meta.user_links_fields:
+            return getattr(self.instance.user_link, field_name)
+        return super().get_initial_for_field(field, field_name)
+
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']
+        fields = ['first_name', 'last_name', 'email', 'profile_photo', 'about', 'link']
+        user_links_fields = ['profile_photo', 'about', 'link']
+        labels = {'first_name': 'First name', 'last_name': 'Last name', 'email': 'Email',
+                  'profile_photo': 'Avatar', 'about': 'About', 'link': 'Link'}
 
-class ProfileForm(forms.ModelForm):
+    def save(self, commit=True):
+        user = super().save(commit)
+        self.save_profile(commit)
+        return user
+
+    def save_profile(self, commit=True):
+        user_link = self.instance.user_link
+
+        for field in self.Meta.user_links_fields:
+            setattr(user_link, field, self.cleaned_data[field])
+
+        if not user_link.profile_photo:
+            user_link.avatar = None
+
+        if commit:
+            user_link.save()
+
+
+class UserUpdateForm(forms.ModelForm):
     class Meta:
-        model = UserLink
-        fields = ['link']
-
-
-
-class UserLinkForm(forms.ModelForm):
-    class Meta:
-        model = UserLink
-        fields = ['link']
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+        labels = {'first_name': 'First name', 'last_name': 'Last name', 'email': 'Email'}
 
 
 class UserUpdatePasswordForm(forms.ModelForm):

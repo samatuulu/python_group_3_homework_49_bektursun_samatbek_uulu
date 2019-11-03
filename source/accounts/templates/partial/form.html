@@ -12,5 +12,6 @@
     <p>{{ field }}</p>
 {% endfor %}
 
-<p><input class="btn btn-success" type="submit" value="{{ button_text }}"></p>
+<p><input class="btn btn-success" type="submit" value="{{ button_text }}">
+<a class="btn btn-dark" href="{% url 'accounts:user_detail' user_obj.pk %}">Cancel</a></p>
 

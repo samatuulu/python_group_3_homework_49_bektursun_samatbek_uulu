@@ -1,3 +1,5 @@
+import re
+
 from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
@@ -100,6 +102,16 @@ class UserChangeForm(forms.ModelForm):
 
         if commit:
             user_link.save()
+
+    def clean_link(self):
+        required_link = 'https://github.com'
+        link = self.cleaned_data.get('link')
+
+        answer = re.match(required_link, link)
+
+        if answer == None:
+            raise ValidationError('Please, indicate only GitHub link.')
+        return link
 
 
 class UserUpdateForm(forms.ModelForm):

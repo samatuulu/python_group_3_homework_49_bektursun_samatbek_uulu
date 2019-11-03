@@ -26,6 +26,7 @@
     {% endif %}
         <a class="nav-item nav-link" href="{% url 'issuetracker:project_index' %}">Projects</a>
         <a class="nav-item nav-link" href="{% url 'accounts:all_users' %}">Users</a>
+        <a class="nav-item nav-link" href="{% url 'issuetracker:team' %}">Team</a>
 
     {% if request.user.is_authenticated %}
          {% block menu %} {% endblock %}

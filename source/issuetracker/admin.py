@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Type, Status, Project
+from .models import Task, Type, Status, Project, Team
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -11,7 +11,13 @@ class TaskAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at']
 
 
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ['pk', 'user', 'project_key', 'created_at', 'finished_at']
+    fields = ['user', 'project_key']
+
+
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Type)
 admin.site.register(Status)
 admin.site.register(Project)
+admin.site.register(Team, TeamAdmin)

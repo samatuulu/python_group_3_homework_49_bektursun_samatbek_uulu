@@ -48,7 +48,7 @@ class Project(models.Model):
 
 
 class Team(models.Model):
-    user = models.ForeignKey(User, related_name='user_member', verbose_name='Users in team', on_delete=models.PROTECT)
-    project_key = models.ForeignKey(Project, related_name='one_project', verbose_name='Projects', on_delete=models.PROTECT)
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Started at')
-    finished_at = models.DateTimeField(auto_now=True, verbose_name='Finished at')
+    user = models.ForeignKey(User, related_name='team', verbose_name='Users in team', on_delete=models.PROTECT)
+    project_key = models.ForeignKey(Project, related_name='team', verbose_name='Projects', on_delete=models.PROTECT)
+    created_at = models.DateField(verbose_name='Started at')
+    finished_at = models.DateField(verbose_name='Finished at')

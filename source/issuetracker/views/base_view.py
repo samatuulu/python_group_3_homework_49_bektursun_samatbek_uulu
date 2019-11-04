@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import TemplateView, View
 
+from issuetracker.models import Project
+
 
 class DetailView(TemplateView):
     context_key = 'objects'
@@ -75,3 +77,12 @@ class DeleteView(View):
 
     def get_redirect_url(self):
         return self.redirect_url
+
+
+class UserCheck:
+    def checker(self, project_pk, project_user):
+        project = Project.objects.filter(pk=project_pk)
+        if project:
+            project_team = project[0].team.all()
+            for user in project_team:
+                return project_user == user.user

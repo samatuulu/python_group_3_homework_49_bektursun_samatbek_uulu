@@ -1,11 +1,13 @@
 from urllib.parse import urlencode
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from issuetracker.forms import TaskForm, SimpleSearchForm
 from issuetracker.models import Task
+from issuetracker.views.base_view import UserCheck
+from django.http import HttpResponseForbidden
 
 
 class IndexView(ListView):
@@ -44,10 +46,17 @@ class IndexView(ListView):
         return None
 
 
-class TaskCreateView(LoginRequiredMixin, CreateView):
+class TaskCreateView(UserCheck, CreateView):
     template_name = 'task/task_create.html'
     model = Task
     form_class = TaskForm
+
+    def form_valid(self, form):
+        project_pk = self.request.POST.get('project')
+        checker = self.checker(project_pk, self.request.user)
+        if checker:
+            return super().form_valid(form)
+        return HttpResponseForbidden()
 
     def get_success_url(self):
         return reverse('issuetracker:index')
@@ -60,18 +69,41 @@ class TaskView(DetailView):
     key_kwarg = 'task.pk'
 
 
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
+class TaskUpdateView(UserCheck, UpdateView):
     model = Task
     template_name = 'task/task_update.html'
     form_class = TaskForm
     context_key = 'task'
 
+    def get(self, *args, **kwargs):
+        task = self.get_object()
+        project_pk = task.project.pk
+        checker = self.checker(project_pk, self.request.user)
+        if checker:
+            return super().get(self.request, *args, **kwargs)
+        return render(self.request, 'task/error_user.html')
+
+    def form_valid(self, form):
+        project_pk = self.request.POST.get('project')
+        checker = self.checker(project_pk, self.request.user)
+        if checker:
+            return super().form_valid(form)
+        return render(self.request, 'task/error_user.html')
+
     def get_success_url(self):
         return reverse('issuetracker:index')
 
 
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
+class TaskDeleteView(UserCheck, DeleteView):
     template_name = 'task/task_delete.html'
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('issuetracker:index')
+
+    def get(self, *args, **kwargs):
+        task = self.get_object()
+        project_pk = task.project.pk
+        checker = self.checker(project_pk, self.request.user)
+        if checker:
+            return super().get(self.request, *args, **kwargs)
+        return render(self.request, 'task/error_user.html')

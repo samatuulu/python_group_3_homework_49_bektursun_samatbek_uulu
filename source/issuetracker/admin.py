@@ -13,7 +13,7 @@ class TaskAdmin(admin.ModelAdmin):
 
 class TeamAdmin(admin.ModelAdmin):
     list_display = ['pk', 'user', 'project_key', 'created_at', 'finished_at']
-    fields = ['user', 'project_key']
+    fields = ['user', 'project_key', 'created_at', 'finished_at']
 
 
 admin.site.register(Task, TaskAdmin)

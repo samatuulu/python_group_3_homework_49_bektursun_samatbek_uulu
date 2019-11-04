@@ -34,3 +34,7 @@ body{
 .test{
    max-width: 40%;
 }
+
+.avatar{
+   border-radius: 50%;
+}

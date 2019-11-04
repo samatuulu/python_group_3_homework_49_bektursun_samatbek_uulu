@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% {% load staticfiles %}
 {% block title %}
     {{ user_obj.username }}
 {% endblock %}
@@ -13,6 +14,8 @@
 {% block content %}
     {% if user_obj.user_link.profile_photo %}
         <img class="avatar" src="{{ user_obj.user_link.profile_photo.url }}" width="250" height="250" alt="user picture">
+        {% else %}
+        <img class="avatar" src="{% static 'pictures/Screenshot from 2019-09-23 01-46-05.png' %}" width="250" height="250" alt="user picture">
     {% endif %}
     <h1>Profile: <b>{{ user_obj.username }}</b></h1>
     <p>First name: {{ user_obj.first_name }}</p>

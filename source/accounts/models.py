@@ -1,7 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 
 class UserLink(models.Model):
@@ -16,14 +14,3 @@ class UserLink(models.Model):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
-
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserLink.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.user_link.save()

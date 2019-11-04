@@ -7,7 +7,6 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from issuetracker.forms import TaskForm, SimpleSearchForm
 from issuetracker.models import Task
 from issuetracker.views.base_view import UserCheck
-from django.http import HttpResponseForbidden
 
 
 class IndexView(ListView):
@@ -56,7 +55,7 @@ class TaskCreateView(UserCheck, CreateView):
         checker = self.checker(project_pk, self.request.user)
         if checker:
             return super().form_valid(form)
-        return HttpResponseForbidden()
+        return render(self.request, 'task/error_user.html')
 
     def get_success_url(self):
         return reverse('issuetracker:index')

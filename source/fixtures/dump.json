@@ -1,30 +1,6 @@
 [
 {
   "model": "issuetracker.task",
-  "pk": 6,
-  "fields": {
-    "summary": "Todo list",
-    "description": "Needs to update from function based view to class based view.",
-    "status": 4,
-    "type": 6,
-    "project": 2,
-    "created_at": "2019-09-25T07:38:34.563Z"
-  }
-},
-{
-  "model": "issuetracker.task",
-  "pk": 7,
-  "fields": {
-    "summary": "Tracker models",
-    "description": "Updated modes.",
-    "status": 6,
-    "type": 5,
-    "project": 3,
-    "created_at": "2019-08-25T07:40:59.641Z"
-  }
-},
-{
-  "model": "issuetracker.task",
   "pk": 8,
   "fields": {
     "summary": "Trucker web applicaion",
@@ -96,6 +72,174 @@
   }
 },
 {
+  "model": "issuetracker.task",
+  "pk": 35,
+  "fields": {
+    "summary": "Test",
+    "description": "",
+    "status": 4,
+    "type": 5,
+    "project": 4,
+    "created_at": "2019-10-23T11:47:55.089Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 36,
+  "fields": {
+    "summary": "Test",
+    "description": "",
+    "status": 5,
+    "type": 5,
+    "project": 3,
+    "created_at": "2019-10-23T11:48:49.557Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 37,
+  "fields": {
+    "summary": "Test",
+    "description": "dasc",
+    "status": 4,
+    "type": 5,
+    "project": 3,
+    "created_at": "2019-10-23T11:52:08.069Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 38,
+  "fields": {
+    "summary": "test",
+    "description": "test",
+    "status": 4,
+    "type": 5,
+    "project": 2,
+    "created_at": "2019-11-04T08:09:47.297Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 39,
+  "fields": {
+    "summary": "test",
+    "description": "test",
+    "status": 5,
+    "type": 25,
+    "project": 2,
+    "created_at": "2019-11-04T08:11:04.061Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 40,
+  "fields": {
+    "summary": "test",
+    "description": "test",
+    "status": 4,
+    "type": 5,
+    "project": 2,
+    "created_at": "2019-11-04T08:12:44.931Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 41,
+  "fields": {
+    "summary": "Test",
+    "description": "test",
+    "status": 5,
+    "type": 5,
+    "project": 3,
+    "created_at": "2019-11-04T08:17:19.429Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 42,
+  "fields": {
+    "summary": "test",
+    "description": "test",
+    "status": 5,
+    "type": 5,
+    "project": 3,
+    "created_at": "2019-11-04T08:18:27.650Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 43,
+  "fields": {
+    "summary": "Test",
+    "description": "",
+    "status": 5,
+    "type": 6,
+    "project": 3,
+    "created_at": "2019-11-04T08:23:52.863Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 44,
+  "fields": {
+    "summary": "Trucker web applicaion",
+    "description": "",
+    "status": 5,
+    "type": 6,
+    "project": 3,
+    "created_at": "2019-11-04T08:24:25.859Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 45,
+  "fields": {
+    "summary": "Test",
+    "description": "",
+    "status": 4,
+    "type": 25,
+    "project": 3,
+    "created_at": "2019-11-04T08:26:04.385Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 46,
+  "fields": {
+    "summary": "test",
+    "description": "test",
+    "status": 4,
+    "type": 5,
+    "project": 2,
+    "created_at": "2019-11-04T08:44:34.091Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 47,
+  "fields": {
+    "summary": "test345",
+    "description": "",
+    "status": 5,
+    "type": 5,
+    "project": 2,
+    "created_at": "2019-11-04T08:47:42.353Z"
+  }
+},
+{
+  "model": "issuetracker.task",
+  "pk": 49,
+  "fields": {
+    "summary": "test07070",
+    "description": "test",
+    "status": 5,
+    "type": 5,
+    "project": 1,
+    "created_at": "2019-11-04T09:17:11.818Z"
+  }
+},
+{
   "model": "issuetracker.type",
   "pk": 5,
   "fields": {
@@ -113,7 +257,7 @@
   "model": "issuetracker.type",
   "pk": 25,
   "fields": {
-    "type": "task"
+    "type": "task2"
   }
 },
 {
@@ -144,7 +288,8 @@
     "tittle": "App",
     "description": "",
     "created_at": "2019-10-08T11:47:50.772Z",
-    "updated_at": "2019-10-08T12:22:08.176Z"
+    "updated_at": "2019-10-08T12:22:08.176Z",
+    "status": "Active"
   }
 },
 {
@@ -152,9 +297,10 @@
   "pk": 2,
   "fields": {
     "tittle": "Refactor",
-    "description": "",
+    "description": "tes",
     "created_at": "2019-10-08T11:54:14.086Z",
-    "updated_at": "2019-10-08T12:22:16.049Z"
+    "updated_at": "2019-11-04T12:06:37.298Z",
+    "status": "Active"
   }
 },
 {
@@ -164,7 +310,8 @@
     "tittle": "Programming",
     "description": "",
     "created_at": "2019-10-08T11:54:37.188Z",
-    "updated_at": "2019-10-08T12:22:39.435Z"
+    "updated_at": "2019-10-08T12:22:39.435Z",
+    "status": "Active"
   }
 },
 {
@@ -174,25 +321,260 @@
     "tittle": "Deploy",
     "description": "",
     "created_at": "2019-10-08T12:23:33.751Z",
-    "updated_at": "2019-10-08T12:23:33.751Z"
+    "updated_at": "2019-10-08T12:23:33.751Z",
+    "status": "Active"
   }
 },
 {
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$150000$yZghLJnfp9oC$yxGxHNZ+kld+bzk1/rN3HXH1EHo2tXJYeqqxMYHzmaY=",
-    "last_login": "2019-10-08T11:46:36.539Z",
+    "password": "pbkdf2_sha256$150000$HjwJmVpejtTi$rKkbSM4zJL2WvPMXM53Cx8TP3vexpNMQK26SgXaJ5ew=",
+    "last_login": "2019-11-04T12:29:47.800Z",
     "is_superuser": true,
     "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
+    "first_name": "admin",
+    "last_name": "test45",
+    "email": "samatbek_uulu_b@iuca.kg",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2019-09-25T06:36:56.696Z",
+    "date_joined": "2019-09-25T06:36:56Z",
     "groups": [],
     "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$AHfnnSimp4dS$KtTLGmF7yo9x48EZPCIrBcL9Oe6gB5THFzbahO/ZOWA=",
+    "last_login": "2019-11-04T12:24:05.058Z",
+    "is_superuser": false,
+    "username": "test",
+    "first_name": "beka",
+    "last_name": "",
+    "email": "test@company.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-28T11:33:42.381Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$GEMyq5KE8QRa$+C/KWN18bCR4pmNxraUivtxBAlGErlKRDwCM8F2/5d0=",
+    "last_login": "2019-11-04T08:46:04.691Z",
+    "is_superuser": false,
+    "username": "Jessa",
+    "first_name": "Jessa",
+    "last_name": "Phio",
+    "email": "jessa@company.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-29T15:38:49.543Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$bM1myNSmvb8e$53pUv0famm6JDVC+1ykuqPLiT3FErXtwvDsdcMaP+zs=",
+    "last_login": "2019-10-30T11:20:35.346Z",
+    "is_superuser": false,
+    "username": "test_4",
+    "first_name": "Jane",
+    "last_name": "",
+    "email": "jane@company.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-30T11:20:35.020Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$JZHh1aZntFlM$DWl4ehvvMvi6wtGkEa9QSppMo+QB3KK6YMy5m6cVfuA=",
+    "last_login": "2019-10-30T20:25:32.515Z",
+    "is_superuser": false,
+    "username": "test_5",
+    "first_name": "test",
+    "last_name": "test",
+    "email": "test2@company.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-30T20:25:32.080Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$456mg8H1n1ZY$FcQtG2HIp/lY+yt3dVCHYFjV8T7EZbrftbrYk+oM0j0=",
+    "last_login": "2019-10-30T20:28:15.610Z",
+    "is_superuser": false,
+    "username": "test_1",
+    "first_name": "test",
+    "last_name": "test",
+    "email": "test3@company.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-30T20:28:14.924Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 18,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$NZcp70G4ta27$PPQwmgeOjuBaAZTxdBN6XCzCI/cp6T1GbLkohk/l0UE=",
+    "last_login": "2019-10-31T12:45:30.388Z",
+    "is_superuser": false,
+    "username": "test_7",
+    "first_name": "testT",
+    "last_name": "",
+    "email": "test_3@company.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T12:45:11.429Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 19,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$3S0AJxptoohl$2jG3qLgMEM6/VyH8DGpDClWWo149Gh4TvU7yu9vNo/U=",
+    "last_login": "2019-11-01T11:07:39.278Z",
+    "is_superuser": false,
+    "username": "4bektursun",
+    "first_name": "",
+    "last_name": "user2",
+    "email": "samatuulu6511@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-11-01T10:27:13.253Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 20,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$Lk7qZC7wExAQ$tQ12bmjKWOFCVL0mORnpxeksAhkgZHjOZi5J5WEGPkg=",
+    "last_login": "2019-11-01T12:15:55.279Z",
+    "is_superuser": false,
+    "username": "test1000",
+    "first_name": "test",
+    "last_name": "",
+    "email": "test1000@company.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-11-01T12:15:54.804Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.userlink",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "profile_photo": "user_pics/Screenshot_from_2019-10-31_16-42-52.png",
+    "about": "",
+    "link": "https://github.com/samatuulu"
+  }
+},
+{
+  "model": "accounts.userlink",
+  "pk": 2,
+  "fields": {
+    "user": 18,
+    "profile_photo": "",
+    "about": null,
+    "link": null
+  }
+},
+{
+  "model": "accounts.userlink",
+  "pk": 4,
+  "fields": {
+    "user": 13,
+    "profile_photo": "user_pics/Screenshot_from_2019-11-02_16-20-02.png",
+    "about": "",
+    "link": "https://github.com/samatuulu"
+  }
+},
+{
+  "model": "accounts.userlink",
+  "pk": 5,
+  "fields": {
+    "user": 19,
+    "profile_photo": "",
+    "about": null,
+    "link": null
+  }
+},
+{
+  "model": "accounts.userlink",
+  "pk": 6,
+  "fields": {
+    "user": 20,
+    "profile_photo": "",
+    "about": null,
+    "link": null
+  }
+},
+{
+  "model": "issuetracker.team",
+  "pk": 1,
+  "fields": {
+    "user": 14,
+    "project_key": 3,
+    "created_at": "2019-11-04",
+    "finished_at": "2019-11-09"
+  }
+},
+{
+  "model": "issuetracker.team",
+  "pk": 2,
+  "fields": {
+    "user": 19,
+    "project_key": 3,
+    "created_at": "2019-11-04",
+    "finished_at": "2019-11-04"
+  }
+},
+{
+  "model": "issuetracker.team",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "project_key": 2,
+    "created_at": "2019-11-04",
+    "finished_at": "2019-11-07"
+  }
+},
+{
+  "model": "issuetracker.team",
+  "pk": 4,
+  "fields": {
+    "user": 13,
+    "project_key": 1,
+    "created_at": "2019-11-04",
+    "finished_at": "2019-11-09"
   }
 }
 ]

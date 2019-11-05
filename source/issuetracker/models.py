@@ -10,6 +10,10 @@ STATUS_CATEGORY = (
 )
 
 
+def get_admin():
+    return User.objects.get(username='admin').id
+
+
 class Task(models.Model):
     summary = models.CharField(max_length=50, null=False, blank=False, verbose_name='Summary')
     description = models.TextField(max_length=2000, null=True, blank=True)
@@ -17,6 +21,8 @@ class Task(models.Model):
     type = models.ForeignKey('issuetracker.Type', related_name='task_type', on_delete=models.PROTECT, verbose_name='Type')
     project = models.ForeignKey('issuetracker.Project', related_name='task_project', on_delete=models.PROTECT, null=True, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
+    created_by = models.ForeignKey(User, related_name='created', null=False, blank=False, default=get_admin, on_delete=models.PROTECT, verbose_name='Created by')
+    assigned_to = models.ForeignKey(User, related_name='assigned', on_delete=models.PROTECT, verbose_name='Assigned to')
 
     def __str__(self):
         return self.summary

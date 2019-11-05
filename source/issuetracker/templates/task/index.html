@@ -13,11 +13,13 @@
     <hr/>
     {% for task in tasks %}
     <div class="jumbotron">
-        <h1 class="display-4">{{ task.summary}}</h1>
+        <h1 class="display-4">{{ task.summary }}</h1>
         <hr class="my-4">
         <p>{{ task.description }}</p>
         <p>Status: {{ task.status }}
-        Type: {{ task.type }}</p>
+        Type: {{ task.type }}
+        Created by: {{ task.created_by }}</p>
+
         <a href="{% url 'issuetracker:task_detail' task.pk %}">More...</a>
         <form method="get" action="{% url 'issuetracker:task_delete' task.pk %}">
 

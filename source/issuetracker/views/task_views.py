@@ -51,10 +51,13 @@ class TaskCreateView(UserCheck, CreateView):
     form_class = TaskForm
 
     def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.created_by = self.request.user
         project_pk = self.request.POST.get('project')
         checker = self.checker(project_pk, self.request.user)
         if checker:
             return super().form_valid(form)
+        self.object.save()
         return render(self.request, 'task/error_user.html')
 
     def get_success_url(self):

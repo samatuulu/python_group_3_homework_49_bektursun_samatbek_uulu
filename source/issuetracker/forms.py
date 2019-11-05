@@ -6,7 +6,7 @@ from issuetracker.models import Status, Type, Task, Project
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        exclude = ['created_at']
+        exclude = ['created_at', 'created_by']
         help_texts = {
             'summary': 'A little words about the task',
             'description': 'Give more information about the task (optional)'

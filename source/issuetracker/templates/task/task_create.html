@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>Add Task</h1>
-    <form method="post" action="{% url 'issuetracker:task_add' %}">
+    <form method="post" action="">
         {% include 'partial/task_form.html' with button_text="Add" %}
     </form>
 {% endblock %}

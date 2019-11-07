@@ -7,7 +7,7 @@ from issuetracker.views import IndexView, TaskView, TaskCreateView, TaskUpdateVi
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('task/<int:pk>/', TaskView.as_view(), name='task_detail'),
-    path('task/add/', TaskCreateView.as_view(), name='task_add'),
+    path('task/add-project/<int:pk>/', TaskCreateView.as_view(), name='task_add'),
     path('task/<int:pk>/update/', TaskUpdateView.as_view(), name='task_update'),
     path('task/<int:pk>/delete/', TaskDeleteView.as_view(), name='task_delete'),
     path('type/', TypeIndexView.as_view(), name='type_index'),

@@ -1,12 +1,22 @@
 from django import forms
+from django.contrib.auth.models import User
 
 from issuetracker.models import Status, Type, Task, Project
 
 
 class TaskForm(forms.ModelForm):
+    def __init__(self, **kwargs):
+        # self.user = kwargs.pop('user')
+        self.projects = kwargs.pop('projects')
+        super().__init__(**kwargs)
+        self.fields['assigned_to'].queryset = User.objects.filter(team_user__project_key__in=self.projects)
+
+    # assigned_to = forms.CharField(max_length=100, label='Assigned_to', required=False)
+    # assigned_to = forms.ModelChoiceField(queryset=User.objects.filter(team__project_key=))
+
     class Meta:
         model = Task
-        exclude = ['created_at', 'created_by']
+        exclude = ['created_at']
         help_texts = {
             'summary': 'A little words about the task',
             'description': 'Give more information about the task (optional)'
@@ -16,6 +26,9 @@ class TaskForm(forms.ModelForm):
                 'required': 'This field needs to be fill out!'
             }
         }
+
+    # def save(self, commit=True):
+    #     super(TaskForm).save(commit=commit)
 
 
 class TypeForm(forms.ModelForm):

@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from issuetracker.forms import TaskForm, SimpleSearchForm
-from issuetracker.models import Task
+from issuetracker.models import Task, Project
 from issuetracker.views.base_view import UserCheck
 
 
@@ -46,18 +46,33 @@ class IndexView(ListView):
 
 
 class TaskCreateView(UserCheck, CreateView):
+
     template_name = 'task/task_create.html'
     model = Task
     form_class = TaskForm
 
+    def get_form(self, **kwargs):
+        form = super().get_form()
+        pk = self.kwargs.get('pk')
+        project = Project.objects.get(pk=pk)
+
+        form.fields['project'].initial = project
+        form.fields['created_by'].initial = self.request.user
+        return form
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        # kwargs['user'] = self.request.user
+        kwargs['projects'] = Project.objects.filter(team_project__user=self.request.user,
+                                                    team_project__finished_at=None).values('pk')
+        print(kwargs)
+        return kwargs
+
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.created_by = self.request.user
         project_pk = self.request.POST.get('project')
         checker = self.checker(project_pk, self.request.user)
         if checker:
             return super().form_valid(form)
-        self.object.save()
         return render(self.request, 'task/error_user.html')
 
     def get_success_url(self):

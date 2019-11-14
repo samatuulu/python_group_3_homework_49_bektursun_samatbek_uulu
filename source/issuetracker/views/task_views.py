@@ -96,6 +96,7 @@ class TaskUpdateView(UserCheck, UpdateView):
         task = self.get_object()
         project_pk = task.project.pk
         checker = self.checker(project_pk, self.request.user)
+        print('here')
         if checker:
             return super().get(self.request, *args, **kwargs)
         return render(self.request, 'task/error_user.html')

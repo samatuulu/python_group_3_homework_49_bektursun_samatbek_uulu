@@ -34,10 +34,12 @@
     </div>
     <hr/>
 
+    {% if perms.issuetracker.add_project %}
     {% if request.user.is_authenticated %}
         <small>Add Project</small>
     <br/>
         <a class="btn btn-success" href="{% url 'issuetracker:project_create' %}">Add Project</a>
+    {% endif %}
     {% endif %}
 
 {% endblock %}

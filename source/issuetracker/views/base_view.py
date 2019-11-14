@@ -83,6 +83,7 @@ class UserCheck:
     def checker(self, project_pk, project_user):
         project = Project.objects.filter(pk=project_pk)
         if project:
-            project_team = project[0].team.all()
+            project_team = project[0].team_project.all()
             for user in project_team:
-                return project_user == user.user
+                if user.user == project_user:
+                    return project_user == user.user

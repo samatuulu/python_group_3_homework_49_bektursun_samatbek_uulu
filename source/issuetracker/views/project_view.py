@@ -1,6 +1,6 @@
 from urllib.parse import urlencode
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
@@ -65,10 +65,12 @@ class ProjectDetailView(DetailView):
         return get_object_or_404(self.model, pk=pk)
 
 
-class ProjectCreateView(LoginRequiredMixin, CreateView):
+class ProjectCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'project/project_create.html'
     model = Project
     form_class = ProjectForm
+    permission_required = 'issuetracker.add_project'
+    permission_denied_message = 'Access denied!'
 
     def get_success_url(self):
         return reverse('issuetracker:project_detail', kwargs={'pk': self.object.pk})

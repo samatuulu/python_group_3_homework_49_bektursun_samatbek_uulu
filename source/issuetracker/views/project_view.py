@@ -1,13 +1,16 @@
 from urllib.parse import urlencode
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.db.models import Q
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
+from django.views.generic.base import View
 
-from issuetracker.forms import ProjectForm, SimpleSearchForm
-from issuetracker.models import Project
+from issuetracker.forms import ProjectForm, SimpleSearchForm, MemberForm
+from issuetracker.models import Project, Team
+from _datetime import datetime
 
 
 class ProjectIndexView(ListView):
@@ -70,6 +73,16 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('issuetracker:project_detail', kwargs={'pk': self.object.pk})
 
+    def form_valid(self, form):
+        users = form.cleaned_data.pop('user_member')
+        current_user = self.request.user
+        users_list = list(users)
+        users_list.append(current_user)
+        self.object = form.save()
+        for user in users_list:
+            Team.objects.create(user=user, project_key=self.object, created_at=datetime.now())
+        return redirect(self.get_success_url())
+
 
 class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'project/project_update.html'
@@ -77,8 +90,49 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     context_object_name = 'project'
     form_class = ProjectForm
 
+    # def get_form(self, form_class=None):
+    #     form = super().get_form(form_class=None)
+    #     form.fields.pop('user_member')
+    #     return form
+
+
+
+    # def form_valid(self, form):
+    #     users = form.cleaned_data.pop('user_member')
+    #     current_user = self.request.user
+    #     users_list = list(users)
+    #     users_list.append(current_user)
+    #     self.object = form.save()
+    #     for user in users_list:
+    #         Team.objects.create(user=user, project_key=self.object, created_at=datetime.now())
+    #     return redirect(self.get_success_url())
+
     def get_success_url(self):
         return reverse('issuetracker:project_detail', kwargs={'pk': self.object.pk})
+
+
+class UpdateProjectMember(LoginRequiredMixin, UpdateView):
+    template_name = 'team/update_member.html'
+    context_object_name = 'project'
+    form_class = MemberForm
+    model = Project
+
+    def form_valid(self, form):
+        user = self.get_user()
+        self.project = self.get_project()
+        Team.objects.create(user=user, project_key=self.project)
+        return self.get_success_url()
+
+    def get_project(self):
+        project_pk = self.kwargs['pk']
+        return Project.objects.get(pk=project_pk)
+
+    def get_user(self):
+        user_pk = self.request.POST['user_member']
+        return User.objects.get(pk=user_pk)
+
+    def get_success_url(self):
+        return redirect('issuetracker:project_index')
 
 
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):

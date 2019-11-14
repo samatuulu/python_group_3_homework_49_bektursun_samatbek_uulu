@@ -56,5 +56,8 @@ class Project(models.Model):
 class Team(models.Model):
     user = models.ForeignKey(User, related_name='team_user', verbose_name='Users in team', on_delete=models.PROTECT)
     project_key = models.ForeignKey(Project, related_name='team_project', verbose_name='Projects', on_delete=models.PROTECT)
-    created_at = models.DateField(verbose_name='Started at')
+    created_at = models.DateField(verbose_name='Started at', null=True, blank=True)
     finished_at = models.DateField(verbose_name='Finished at', null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)

@@ -2,7 +2,7 @@ from django.urls import path
 from issuetracker.views import IndexView, TaskView, TaskCreateView, TaskUpdateView, TaskDeleteView, TypeIndexView, \
     TypeCreateView, TypeUpdateView, TypeDeleteView, StatusIndexView, StatusCreateView, StatusUpdateView, \
     StatusDeleteView, ProjectIndexView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView, \
-    TeamIndexView
+    TeamIndexView, UpdateProjectMember
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
@@ -24,7 +24,7 @@ urlpatterns = [
     path('project/<int:pk>/update/', ProjectUpdateView.as_view(), name='project_update'),
     path('project/<int:pk>/delete/', ProjectDeleteView.as_view(), name='project_delete'),
     path('team/', TeamIndexView.as_view(), name='team'),
-
+    path('member/<int:pk>/update/', UpdateProjectMember.as_view(), name='update_member')
 ]
 
 app_name = 'issuetracker'

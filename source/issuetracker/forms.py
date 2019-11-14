@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from issuetracker.models import Status, Type, Task, Project
+from issuetracker.models import Status, Type, Task, Project, Team
 
 
 class TaskForm(forms.ModelForm):
@@ -50,9 +50,19 @@ class StatusForm(forms.ModelForm):
 
 
 class ProjectForm(forms.ModelForm):
+    user_member = forms.ModelMultipleChoiceField(queryset=User.objects.all())
+
     class Meta:
         model = Project
         fields = ['tittle', 'description', 'status']
+
+
+class MemberForm(forms.ModelForm):
+    user_member = forms.ModelMultipleChoiceField(queryset=User.objects.all())
+
+    class Meta:
+        model = Team
+        exclude = ['user', 'project_key', 'created_at', 'finished_at']
 
 
 class SimpleSearchForm(forms.Form):

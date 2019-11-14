@@ -5,11 +5,18 @@
 {% endblock %}
 
 {% block content %}
-    <h3>Project name: {{ project.tittle }}</h3><a class="nav-item nav-link" href="{% url 'issuetracker:task_add' project.pk %}?next={{ request.path }}">Add task</a>
+    <h3>Project name: {{ project.tittle }}</h3><a class="nav-item nav-link"  style="display: inline;" href="{% url 'issuetracker:task_add' project.pk %}?next={{ request.path }}">Add task</a>
+    <a class="nav-item nav-link"  style="display: inline;" href="#">Add user</a>
     <p>Description: {{ project.description }}<br/>
     Created at: {{ project.created_at|date:'d.m.Y H:i:s'  }}<br/>
     Updated at: {{ project.updated_at|date:'d.m.Y H:i:s'  }}<br/>
-    Project status: {{ project.status }}</p>
+    Project status: {{ project.status }}<br/>
+    Team members:
+        {% for team in project.team_project.all %}
+            {{ team.user.username }}
+        {% endfor %}
+    <a class="nav-item nav-link" href="{% url 'issuetracker:update_member'  project.pk %}">Update member</a>
+{#    Users in this project: {{ project.team_project.all }}</p>#}
     <hr>
 
 <h5>Tasks for {{ project }} project</h5>

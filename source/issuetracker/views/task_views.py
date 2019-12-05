@@ -26,7 +26,7 @@ class IndexView(ListView):
         context['form'] = self.form
 
         if self.search_value:
-            context['query'] = urlencode({'search': self.search_value})
+            context['query']= urlencode({'search': self.search_value})
         return context
 
     def get_queryset(self):

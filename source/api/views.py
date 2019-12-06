@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+
 from issuetracker.models import Project, Task
 from api.serializers import ProjectSerializer, TaskSerializer
 

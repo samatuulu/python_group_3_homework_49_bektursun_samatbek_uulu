@@ -37,7 +37,18 @@ function jqueryLoadIndex(){
 
 };
 
+function jqueryLoadIndexTask(){
+    $.ajax({
+       url: "http://localhost:8000/api/task/",
+        method: 'GET',
+        success: jqueryParseData,
+        error: jqueryAjaxError
+    });
+
+};
+
 $(document).ready(function () {
     jqueryLoadIndex();
+    jqueryLoadIndexTask();
 
 });

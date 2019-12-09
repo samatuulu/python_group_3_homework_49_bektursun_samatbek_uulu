@@ -14,6 +14,7 @@ $.ajax({
     error: function(response, status){console.log(response);}
 });
 
+
 function jqueryParseData(response, status) {
     console.log(response);
 	console.log(status);
@@ -24,7 +25,6 @@ function jqueryAjaxError(response, status) {
     console.log(response);
     console.log(status);
     console.log('error');
-    
 
 }
 

@@ -1,3 +1,6 @@
+const indexLink = "http://localhost:8000/api/project/";
+
+
 $.ajax({
     url: 'http://localhost:8000/api/login/',
     method: 'post',
@@ -11,14 +14,30 @@ $.ajax({
     error: function(response, status){console.log(response);}
 });
 
+function jqueryParseData(response, status) {
+    console.log(response);
+	console.log(status);
+};
 
-$.ajax({
-     url: 'http://localhost:8000/api/project/',
-     method: 'get',
-     headers: {'Authorization': 'Token ' + localStorage.getItem('apiToken')},
-     data: JSON.stringify({username: 'admin', password: 'admin'}),
-     dataType: 'json',
-     contentType: 'application/json',
-     success: function(response, status){console.log(response);},
-     error: function(response, status){console.log(response);}
+
+function jqueryAjaxError(response, status) {
+    console.log(response);
+    console.log(status);
+    console.log('error');
+    
+};
+
+function jqueryLoadIndex(){
+    $.ajax({
+       url: indexLink,
+        method: 'GET',
+        success: jqueryParseData,
+        error: jqueryAjaxError
+    });
+
+};
+
+$(document).ready(function () {
+    jqueryLoadIndex();
+
 });

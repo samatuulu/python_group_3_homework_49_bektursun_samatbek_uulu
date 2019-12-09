@@ -75,10 +75,25 @@ function jqueryCreateTask(){
 
 }
 
+function ajaxDeleteTask() {
+    $.ajax({
+    url: 'http://localhost:8000/api/task/103/',
+    method: 'delete',
+    dataType: 'json',
+    headers: {'Authorization': 'Token ' + localStorage.getItem('apiToken')},
+    contentType: 'application/json',
+    success: function(response, status){
+        console.log('deleted')
+        },
+    error: function(response, status){console.log(response);}
+    });
+}
+
 $(document).ready(function () {
     jqueryLoadIndex();
     jqueryLoadIndexTask();
     jqueryLoadProjectDetail();
     jqueryCreateTask();
+    ajaxDeleteTask();
 
 });

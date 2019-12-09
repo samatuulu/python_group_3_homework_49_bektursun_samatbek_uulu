@@ -17,7 +17,8 @@ $.ajax({
 function jqueryParseData(response, status) {
     console.log(response);
 	console.log(status);
-};
+
+}
 
 
 function jqueryAjaxError(response, status) {
@@ -25,7 +26,8 @@ function jqueryAjaxError(response, status) {
     console.log(status);
     console.log('error');
     
-};
+
+}
 
 function jqueryLoadIndex(){
     $.ajax({
@@ -35,7 +37,7 @@ function jqueryLoadIndex(){
         error: jqueryAjaxError
     });
 
-};
+}
 
 function jqueryLoadIndexTask(){
     $.ajax({
@@ -45,10 +47,22 @@ function jqueryLoadIndexTask(){
         error: jqueryAjaxError
     });
 
-};
+}
+
+function jqueryLoadProjectDetail(){
+    $.ajax({
+       url: "http://localhost:8000/api/project/3/",
+        method: 'GET',
+        success: jqueryParseData,
+        error: jqueryAjaxError
+    });
+
+}
+
 
 $(document).ready(function () {
     jqueryLoadIndex();
     jqueryLoadIndexTask();
+    jqueryLoadProjectDetail();
 
 });

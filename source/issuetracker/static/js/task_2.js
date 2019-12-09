@@ -52,7 +52,7 @@ function jqueryLoadProjectDetail(){
     $.ajax({
        url: "http://localhost:8000/api/project/3/",
         method: 'GET',
-        success: jqueryParseData,
+        success: function(response, status){console.log(response.task_project)},
         error: jqueryAjaxError
     });
 
@@ -77,7 +77,7 @@ function jqueryCreateTask(){
 
 function ajaxDeleteTask() {
     $.ajax({
-    url: 'http://localhost:8000/api/task/103/',
+    url: 'http://localhost:8000/api/task/100/',
     method: 'delete',
     dataType: 'json',
     headers: {'Authorization': 'Token ' + localStorage.getItem('apiToken')},
@@ -90,10 +90,10 @@ function ajaxDeleteTask() {
 }
 
 $(document).ready(function () {
-    jqueryLoadIndex();
-    jqueryLoadIndexTask();
+    // jqueryLoadIndex();
+    // jqueryLoadIndexTask();
     jqueryLoadProjectDetail();
-    jqueryCreateTask();
-    ajaxDeleteTask();
+    // jqueryCreateTask();
+    // ajaxDeleteTask();
 
 });

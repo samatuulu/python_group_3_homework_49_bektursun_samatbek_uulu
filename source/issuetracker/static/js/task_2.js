@@ -20,7 +20,6 @@ function jqueryParseData(response, status) {
 
 }
 
-
 function jqueryAjaxError(response, status) {
     console.log(response);
     console.log(status);
@@ -59,10 +58,27 @@ function jqueryLoadProjectDetail(){
 
 }
 
+function jqueryCreateTask(){
+    $.ajax({
+    url: 'http://localhost:8000/api/task/',
+    method: 'post',
+    data: JSON.stringify({summary: "test", description: "test3", status: 5, type: 5, project: 3,
+    assigned_to: 1}),
+    dataType: 'json',
+    headers: {'Authorization': 'Token ' + localStorage.getItem('apiToken')},
+    contentType: 'application/json',
+    success: function(response, status){
+        console.log(response)
+        },
+    error: function(response, status){console.log(response);}
+    });
+
+}
 
 $(document).ready(function () {
     jqueryLoadIndex();
     jqueryLoadIndexTask();
     jqueryLoadProjectDetail();
+    jqueryCreateTask();
 
 });
